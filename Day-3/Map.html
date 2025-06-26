@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Interactive India Map</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0f2027;
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+    }
+
+    h2 {
+      margin-top: 20px;
+    }
+
+    .map-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 30px auto;
+      max-width: 900px;
+    }
+
+    svg {
+      width: 100%;
+      height: auto;
+    }
+
+    svg path {
+      fill: #3498db;
+      stroke: #fff;
+      stroke-width: 0.5;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    svg path:hover {
+      fill: #f39c12;
+    }
+  </style>
+</head>
+<body>
+  <h2>🗺️ Interactive India Map</h2>
+  <div class="map-container">
+    
+      <!-- Rajasthan -->
+      <a xlink:href="https://en.wikipedia.org/wiki/Rajasthan" target="_blank">
+        <path d="M193.3,211.8 L202.6,216.7 L210.1,228.4 L215.3,242.3 L209.6,253.9 L196.4,257.2 L187.4,246.4 L182.1,230.9 L186.7,217.2 Z" title="Rajasthan"/>
+      </a>
+
+      <!-- Maharashtra -->
+      <a xlink:href="https://en.wikipedia.org/wiki/Maharashtra" target="_blank">
+        <path d="M238.2,309.1 L247.2,312.4 L256.1,318.9 L260.9,330.7 L255.8,344.8 L244.6,348.1 L232.9,341.6 L226.3,328.2 L229.7,316.3 Z" title="Maharashtra"/>
+      </a>
+
+      <!-- Tamil Nadu -->
+      <a xlink:href="https://en.wikipedia.org/wiki/Tamil_Nadu" target="_blank">
+        <path d="M297.1,478.6 L306.2,484.1 L310.9,495.7 L306.5,507.9 L296.1,510.7 L286.3,502.4 L281.6,490.2 L285.2,480.3 Z" title="Tamil Nadu"/>
+      </a>
+
+      <!-- Uttar Pradesh -->
+      <a xlink:href="https://en.wikipedia.org/wiki/Uttar_Pradesh" target="_blank">
+        <path d="M270.3,232.6 L280.1,236.9 L290.5,245.4 L296.2,258.7 L288.9,270.4 L275.3,273.7 L264.1,264.9 L257.4,251.4 L260.5,238.1 Z" title="Uttar Pradesh"/>
+      </a>
+
+      <!-- West Bengal -->
+      <a xlink:href="https://en.wikipedia.org/wiki/West_Bengal" target="_blank">
+        <path d="M344.3,249.3 L354.2,255.8 L359.6,267.6 L356.7,278.5 L344.9,281.7 L334.7,274.1 L328.6,262.6 L331.4,251.1 Z" title="West Bengal"/>
+      </a>
+    </svg>
+  </div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RGB Div Blocks</title>
+    <style>
+        body {
+            background-color: rgb(0, 0, 0);
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .color-box {
+            width: 80%;
+            height: 150px;
+            margin: 15px 0;
+            color: rgb(0, 0, 0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .box1 { background-color: rgba(255, 99, 71, 1); }       /* Tomato */
+        .box2 { background-color: #008000; }                /* Green */
+        .box3 { background-color: rgb(30, 144, 255); }      /* Dodger Blue */
+        .box4 { background-color: #FFFF00; color: black; }  /* Yellow */
+        .box5 { background-color: hsl(276, 76%, 53%); }    
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="color-box box1">Red</div>
+    <div class="color-box box2">Green</div>
+    <div class="color-box box3">Blue</div>
+    <div class="color-box box4">Yellow</div>
+    <div class="color-box box5">Violet</div>
+</div>
+
+</body>
+</html>

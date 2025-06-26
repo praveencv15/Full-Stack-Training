@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Complete Stylish Registration</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at top left, #3a3d40, #18191a);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 40px 30px;
+      width: 500px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+      animation: fadeScale 0.8s ease;
+      position: relative;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: -2px; left: -2px; right: -2px; bottom: -2px;
+      background: linear-gradient(135deg, #00ffe7, #9f00ff, #00ffe7);
+      background-size: 400% 400%;
+      z-index: -1;
+      border-radius: 22px;
+      animation: borderGlow 10s ease infinite;
+      filter: blur(10px);
+    }
+
+    .card:hover {
+      transform: scale(1.015);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 26px;
+    }
+
+    .form-group {
+      position: relative;
+      margin-bottom: 25px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 12px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      outline: none;
+      transition: 0.3s ease;
+      box-shadow: inset 1px 1px 8px rgba(0, 255, 255, 0.15),
+                  inset -1px -1px 8px rgba(255, 0, 255, 0.15);
+    }
+
+    .form-group input[type="date"] {
+      color-scheme: dark;
+    }
+
+    .form-group select {
+      width: 100%;
+      padding: 14px 12px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      transition: 0.3s ease;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="14" viewBox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 18px;
+      box-shadow: inset 1px 1px 8px rgba(0, 255, 255, 0.15),
+                  inset -1px -1px 8px rgba(255, 0, 255, 0.15);
+    }
+
+    select option {
+      background-color: #2e2e2e;
+      color: #fff;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      box-shadow: 0 0 10px #00ffe7, 0 0 20px #9f00ff;
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .form-group label {
+      position: absolute;
+      top: 50%;
+      left: 14px;
+      transform: translateY(-50%);
+      font-size: 0.95rem;
+      color: #bbb;
+      pointer-events: none;
+      transition: 0.3s ease;
+    }
+
+    .form-group input:focus + label,
+    .form-group input:not(:placeholder-shown) + label,
+    .form-group textarea:focus + label,
+    .form-group textarea:not(:placeholder-shown) + label,
+    .form-group select:valid + label {
+      top: -10px;
+      left: 10px;
+      font-size: 0.75rem;
+      background-color: #2e2e2e;
+      padding: 0 5px;
+      border-radius: 4px;
+      color: #fff;
+    }
+
+    .option-group {
+      margin-bottom: 20px;
+    }
+
+    .option-group label {
+      display: block;
+      margin: 8px 0;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+
+    .option-group input {
+      margin-right: 8px;
+      transform: scale(1.1);
+    }
+
+    .upload-wrapper {
+      margin-bottom: 25px;
+    }
+
+    .upload-label {
+      display: block;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      text-align: center;
+      color: #ccc;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.15),
+                  inset 0 0 10px rgba(255, 0, 255, 0.1);
+    }
+
+    .upload-label:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      box-shadow: 0 0 8px #00ffe7, 0 0 15px #9f00ff;
+    }
+
+    .upload-wrapper input[type="file"] {
+      display: none;
+    }
+
+    .preview {
+      margin: 15px auto 0;
+      text-align: center;
+    }
+
+    .preview img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid #00ffe7;
+      box-shadow: 0 0 10px #00ffe7, 0 0 20px #9f00ff;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      border: none;
+      color: #fff;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #5a67d8, #6b46c1);
+      transform: scale(1.02);
+    }
+
+    @keyframes fadeScale {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes borderGlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>📝 Registration Form</h2>
+    <form>
+      <!-- Name -->
+      <div class="form-group">
+        <input type="text" id="name" name="name" placeholder="Name " required>
+        <label for="name">Name</label>
+      </div>
+
+      <!-- DOB -->
+      <div class="form-group">
+        <input type="date" id="dob" name="dob" placeholder="Date of Birth " required>
+        <label for="dob">Date of Birth</label>
+      </div>
+
+      <!-- State -->
+      <div class="form-group">
+        <select id="state" name="state" required>
+          <option value="" disabled selected hidden></option>
+          <option value="Tamil Nadu">Tamil Nadu</option>
+          <option value="Kerala">Kerala</option>
+          <option value="Maharashtra">Maharashtra</option>
+          <option value="Karnataka">Karnataka</option>
+        </select>
+        <label for="state">State</label>
+      </div>
+
+      <!-- City -->
+      <div class="form-group">
+        <select id="city" name="city" required>
+          <option value="" disabled selected hidden></option>
+          <option value="Chennai">Chennai</option>
+          <option value="Mumbai">Mumbai</option>
+          <option value="Bangalore">Bangalore</option>
+          <option value="Kochi">Kochi</option>
+        </select>
+        <label for="city">City</label>
+      </div>
+
+      <!-- Photo Upload -->
+      <div class="upload-wrapper">
+        <label for="photo" class="upload-label">📷 Upload Photo</label>
+        <input type="file" id="photo" name="photo" accept="image/*">
+        <div class="preview">
+          <img id="preview-img" src="#" alt="Preview" style="display: none;" />
+        </div>
+      </div>
+
+      <!-- Department -->
+      <div class="option-group">
+        <label>Department</label>
+        <label><input type="radio" name="dept" value="CSE" required> CSE</label>
+        <label><input type="radio" name="dept" value="ECE"> ECE</label>
+        <label><input type="radio" name="dept" value="IT"> IT</label>
+        <label><input type="radio" name="dept" value="MECH"> MECH</label>
+      </div>
+
+      <!-- Address -->
+      <div class="form-group">
+        <textarea id="address" name="address" rows="3" placeholder="Address " required></textarea>
+        <label for="address">Address</label>
+      </div>
+
+      <!-- Favorite Subjects -->
+      <div class="option-group">
+        <label>Favorite Subjects</label>
+        <label><input type="checkbox" name="subject" value="Maths"> Maths</label>
+        <label><input type="checkbox" name="subject" value="Physics"> Physics</label>
+        <label><input type="checkbox" name="subject" value="CS"> Computer Science</label>
+        <label><input type="checkbox" name="subject" value="English"> English</label>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit">Register</button>
+    </form>
+  </div>
+
+  <script>
+    const photoInput = document.getElementById('photo');
+    const previewImg = document.getElementById('preview-img');
+
+    photoInput.addEventListener('change', function () {
+      const file = this.files[0];
+      if (file) {
+        previewImg.src = URL.createObjectURL(file);
+        previewImg.style.display = 'block';
+      }
+    });
+  </script>
+
+</body>
+</html>
