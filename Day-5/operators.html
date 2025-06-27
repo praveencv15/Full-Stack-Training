@@ -1,0 +1,77 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Positive or Negative Checker</title>
+</head>
+<body>
+  <script>
+    let input = prompt("Enter a number:");
+    let num = parseFloat(input);
+
+    if (isNaN(num)) {
+      alert("Please enter a valid number.");
+    } else if (num > 0) {
+      alert("The number is positive.");
+    } else if (num < 0) {
+      alert("The number is negative.");
+    } else {
+      alert("The number is zero.");
+    }
+  </script>
+</body>
+</html> -->
+
+<!-- Using ternary operator to check if a number is positive, negative -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Check Number Using Ternary</title>
+</head>
+<body>
+  <script>
+    let input = prompt("Enter a number:");
+    let num = parseFloat(input);
+
+    isNaN(num)
+      ? alert("Invalid input. Please enter a number.")
+      : alert(
+          num > 0 ? "Positive number"
+        : num < 0 ? "Negative number"
+        : "Zero"
+      );
+  </script>
+</body>
+</html> -->
+
+<!-- Simple Calculator -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Calculator</title>
+</head>
+<body>
+  <script>
+    let num1 = parseFloat(prompt("Enter first number:"));
+    let num2 = parseFloat(prompt("Enter second number:"));
+    let operator = prompt("Enter operator (+, -, *, /):");
+
+    let result = isNaN(num1) || isNaN(num2)
+      ? "Invalid number input."
+      : operator === "+" ? `Sum = ${num1 + num2}`
+      : operator === "-" ? `Difference = ${num1 - num2}`
+      : operator === "*" ? `Product = ${num1 * num2}`
+      : operator === "/" 
+        ? num2 !== 0 
+          ? `Division = ${num1 / num2}` 
+          : "Cannot divide by zero."
+      : "Invalid operator.";
+
+    alert(result);
+  </script>
+</body>
+</html>

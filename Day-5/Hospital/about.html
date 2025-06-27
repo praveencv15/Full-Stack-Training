@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>About Us - CityCare Hospital</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      scroll-behavior: smooth;
+    }
+
+    section {
+      margin-bottom: 60px;
+      animation: fadeInUp 0.8s ease-in-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section-heading {
+      text-align: center;
+      color: #004080;
+      margin-bottom: 25px;
+      font-size: 2rem;
+      position: relative;
+    }
+
+    .section-heading::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: #004080;
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+
+    .two-columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .two-columns div {
+      flex: 1;
+      min-width: 280px;
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(10px);
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .two-columns div:hover {
+      transform: translateY(-5px);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .highlight-card {
+      background: rgba(255, 255, 255, 0.25);
+      padding: 25px;
+      text-align: center;
+      border-radius: 16px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .highlight-card:hover {
+      transform: scale(1.05);
+    }
+
+    .highlight-card h3 {
+      color: #004080;
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .timeline {
+      border-left: 3px solid #004080;
+      padding-left: 30px;
+      position: relative;
+    }
+
+    .timeline-item {
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -18px;
+      top: 4px;
+      width: 14px;
+      height: 14px;
+      background: #004080;
+      border-radius: 50%;
+    }
+
+    .timeline-item h4 {
+      margin-bottom: 5px;
+      color: #004080;
+      font-weight: bold;
+    }
+
+    .founder-card {
+      text-align: center;
+      padding: 25px;
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+      transition: 0.3s ease-in-out;
+    }
+
+    .founder-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .founder-card img {
+      width: 100px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      border: 3px solid #004080;
+    }
+
+    .founder-card h4 {
+      color: #004080;
+      margin-bottom: 5px;
+    }
+
+    .founder-card p {
+      font-size: 0.95rem;
+      color: #444;
+    }
+
+    @media (max-width: 768px) {
+      .section-heading {
+        font-size: 1.6rem;
+      }
+
+      .two-columns {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>About CityCare Hospital</header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="infrastructure.html">Infrastructure</a>
+    <a href="patients-doctors.html">Patients & Doctors</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <div class="container">
+
+    <!-- Intro -->
+    <section>
+      <h2 class="section-heading">Who We Are</h2>
+      <p style="text-align:center; font-size:1.1rem;">Founded in 2001, CityCare Hospital has grown into one of the most trusted names in healthcare. We provide advanced, compassionate, and innovative care in specialties including cardiology, neurology, orthopedics, pediatrics, and emergency medicine.</p>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="two-columns">
+      <div>
+        <h3>🎯 Our Mission</h3>
+        <p>To provide high-quality, patient-centered healthcare through innovation, compassion, and commitment to medical excellence and outcomes.</p>
+      </div>
+      <div>
+        <h3>🔭 Our Vision</h3>
+        <p>To become the most respected healthcare provider nationwide—setting benchmarks in ethical practices, affordability, and care standards.</p>
+      </div>
+    </section>
+
+    <!-- Core Values -->
+    <section>
+      <h2 class="section-heading">Our Core Values</h2>
+      <div class="card-grid">
+        <div class="highlight-card">
+          <h3>❤️ Compassion</h3>
+          <p>We treat every individual with empathy, dignity, and kindness.</p>
+        </div>
+        <div class="highlight-card">
+          <h3>🔒 Integrity</h3>
+          <p>We uphold honesty and transparency in every action we take.</p>
+        </div>
+        <div class="highlight-card">
+          <h3>⚙️ Innovation</h3>
+          <p>We embrace technology and creative thinking to improve outcomes.</p>
+        </div>
+        <div class="highlight-card">
+          <h3>🏆 Excellence</h3>
+          <p>We aim to exceed expectations in everything we do.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section>
+      <h2 class="section-heading">Milestones & Growth</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h4>2001</h4>
+          <p>CityCare was founded with just 50 beds and 10 medical professionals.</p>
+        </div>
+        <div class="timeline-item">
+          <h4>2005</h4>
+          <p>Cardiology and Orthopedics departments introduced.</p>
+        </div>
+        <div class="timeline-item">
+          <h4>2012</h4>
+          <p>Achieved ISO 9001 certification and NABH accreditation.</p>
+        </div>
+        <div class="timeline-item">
+          <h4>2022</h4>
+          <p>Hospital expanded to 300+ beds and launched robotic surgery unit.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Founders -->
+    <section>
+      <h2 class="section-heading">Meet Our Founders</h2>
+      <div class="card-grid">
+        <div class="founder-card">
+          <img src="images/founder1.jpg" alt="Dr. Meena Reddy">
+          <h4>Dr. Meena Reddy</h4>
+          <p>Founder & Chief Surgeon</p>
+        </div>
+        <div class="founder-card">
+          <img src="images/founder2.jpg" alt="Dr. Rajan Verma">
+          <h4>Dr. Rajan Verma</h4>
+          <p>Co-Founder & Director</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section>
+      <h2 class="section-heading">CityCare by the Numbers</h2>
+      <div class="card-grid">
+        <div class="highlight-card">
+          <h3>20+</h3>
+          <p>Years of Excellence</p>
+        </div>
+        <div class="highlight-card">
+          <h3>50K+</h3>
+          <p>Happy Patients Annually</p>
+        </div>
+        <div class="highlight-card">
+          <h3>25+</h3>
+          <p>Medical Specialties</p>
+        </div>
+        <div class="highlight-card">
+          <h3>300+</h3>
+          <p>Certified Medical Staff</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
