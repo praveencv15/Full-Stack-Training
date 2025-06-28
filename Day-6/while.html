@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu Driven Calculator</title>
+</head>
+<body>
+
+  <script>
+    let choice;
+    let result;
+
+    do {
+      choice = parseInt(prompt(
+        "Menu:\n" +
+        "1. Addition\n" +
+        "2. Subtraction\n" +
+        "3. Multiplication\n" +
+        "4. Division\n" +
+        "5. Exit\n\n" +
+        "Enter your choice:"
+      ));
+
+      if (choice >= 1 && choice <= 4) {
+        let num1 = parseFloat(prompt("Enter first number:"));
+        let num2 = parseFloat(prompt("Enter second number:"));
+
+        switch (choice) {
+          case 1:
+            result = num1 + num2;
+            alert("Result: " + result);
+            break;
+          case 2:
+            result = num1 - num2;
+            alert("Result: " + result);
+            break;
+          case 3:
+            result = num1 * num2;
+            alert("Result: " + result);
+            break;
+          case 4:
+            if (num2 === 0) {
+              alert("Division by zero is not allowed.");
+            } else {
+              result = num1 / num2;
+              alert("Result: " + result);
+            }
+            break;
+        }
+      } else if (choice !== 5) {
+        alert("Invalid choice. Please select 1-5.");
+      }
+
+    } while (choice !== 5);
+
+    alert("Calculator exited.");
+  </script>
+
+</body>
+</html>
