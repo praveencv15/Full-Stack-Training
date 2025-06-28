@@ -7,19 +7,27 @@
 </head>
 <body>
     <script>
-        let arr = [];
-        let n = parseInt(prompt("Enter the size: "));
-        for(let i=0;i<n;i++){
-            arr[i] = parseInt(prompt("Enter the number: "));
-        }
+        // let arr = [];
+        // let n = parseInt(prompt("Enter the size: "));
+        // for(let i=0;i<n;i++){
+        //     arr[i] = parseInt(prompt("Enter the number: "));
+        // }
 
-        let sum=0;
+        // let sum=0;
+        // for(let i=0;i<arr.length;i++){
+        //     if(arr[i] % 2 == 0){
+        //         sum += arr[i];
+        //     }
+        // }
+        // alert(sum);
+
+        let arr = [1, 2, 3, 4];
+        arr.push(5);
+        arr.push(6);
+        arr.pop();
         for(let i=0;i<arr.length;i++){
-            if(arr[i] % 2 == 0){
-                sum += arr[i];
-            }
+            document.writeln(arr[i]+"<br>");
         }
-        alert(sum);
     </script>
     
 </body>
