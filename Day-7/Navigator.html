@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Geolocation Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #74ebd5, #ACB6E5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: #333;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .output {
+      font-size: 18px;
+      padding: 10px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Get Your Current Location</h2>
+  <button onclick="getLocation()">Show Location</button>
+  <div class="output" id="output">
+    Click the button to display your latitude and longitude.
+  </div>
+
+  <script>
+    function getLocation() {
+      const output = document.getElementById("output");
+
+      if (!navigator.geolocation) {
+        output.innerHTML = "Geolocation is not supported by your browser.";
+        return;
+      }
+
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+          output.innerHTML = `
+            Latitude: ${latitude.toFixed(6)}<br>
+            Longitude: ${longitude.toFixed(6)}
+          `;
+        },
+        (error) => {
+          switch(error.code) {
+            case error.PERMISSION_DENIED:
+              output.innerHTML = "User denied the request for Geolocation.";
+              break;
+            case error.POSITION_UNAVAILABLE:
+              output.innerHTML = "Location information is unavailable.";
+              break;
+            case error.TIMEOUT:
+              output.innerHTML = "The request to get user location timed out.";
+              break;
+            default:
+              output.innerHTML = "An unknown error occurred.";
+              break;
+          }
+        }
+      );
+    }
+  </script>
+
+</body>
+</html>

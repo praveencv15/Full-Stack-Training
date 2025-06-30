@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Drag & Drop</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #89f7fe, #66a6ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background:linear-gradient(135deg, rgba(147, 200, 250, 0.8), rgba(242, 249, 255, 0.5));
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 40px;
+      width: 500px;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    }
+
+    h2 {
+      color: #fff;
+      margin-bottom: 30px;
+    }
+
+    .question-box {
+      border: 2px dashed #fff;
+      padding: 30px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #fff;
+      min-height: 80px;
+      transition: background 0.3s;
+    }
+
+    .question-box.hovered {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .answers {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .answer {
+      background: rgb(112, 164, 255);
+      padding: 12px 20px;
+      border-radius: 10px;
+      cursor: grab;
+      font-weight: bold;
+      color: #fff;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .popup {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #ff4d4d;
+      color: white;
+      padding: 15px 25px;
+      border-radius: 10px;
+      display: none;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      animation: fadeInOut 2.5s ease-in-out forwards;
+    }
+
+    @keyframes fadeInOut {
+      0% { opacity: 0; transform: translateY(-20px); }
+      10% { opacity: 1; transform: translateY(0); }
+      90% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-20px); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Drop the Correct Answer</h2>
+    <div class="question-box" id="drop-zone" ondragover="allowDrop(event)" ondrop="drop(event)">
+      What is 2 + 2?
+    </div>
+
+    <div class="answers">
+      <div class="answer" id="ans1" draggable="true" ondragstart="drag(event)" onmouseover="hoverEffect(this)" onmouseout="removeHoverEffect(this)">3</div>
+      <div class="answer" id="ans2" draggable="true" ondragstart="drag(event)" onmouseover="hoverEffect(this)" onmouseout="removeHoverEffect(this)">4</div> <!-- correct -->
+      <div class="answer" id="ans3" draggable="true" ondragstart="drag(event)" onmouseover="hoverEffect(this)" onmouseout="removeHoverEffect(this)">5</div>
+    </div>
+  </div>
+
+  <div class="popup" id="popup">Incorrect Answer! Try Again.</div>
+
+  <script>
+    function allowDrop(event) {
+      event.preventDefault();
+      document.getElementById("drop-zone").classList.add("hovered");
+    }
+
+    function drag(event) {
+      event.dataTransfer.setData("text", event.target.id);
+    }
+
+    function drop(event) {
+      event.preventDefault();
+      document.getElementById("drop-zone").classList.remove("hovered");
+      const draggedId = event.dataTransfer.getData("text");
+      const draggedElement = document.getElementById(draggedId);
+      const correctId = "ans2";
+      
+      if (draggedId === correctId) {
+        event.target.innerHTML = "";
+        event.target.appendChild(draggedElement);
+        draggedElement.setAttribute("draggable", "false");
+        draggedElement.style.cursor = "default";
+        draggedElement.style.background = "#4caf50";
+        draggedElement.style.border = "2px solid #fff";
+      } else {
+        showPopup();
+      }
+    }
+
+    function showPopup() {
+      const popup = document.getElementById("popup");
+      popup.style.display = "block";
+      setTimeout(() => {
+        popup.style.display = "none";
+      }, 2500);
+    }
+
+    function hoverEffect(el) {
+      el.style.transform = "scale(1.1)";
+      el.style.border = "2px solid #fff";
+      el.style.boxShadow = "0 0 10px rgba(255,255,255,0.8)";
+    }
+
+    function removeHoverEffect(el) {
+      el.style.transform = "scale(1)";
+      el.style.border = "2px solid transparent";
+      el.style.boxShadow = "none";
+    }
+  </script>
+
+</body>
+</html>
