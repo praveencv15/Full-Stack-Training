@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register Form</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #89f7fe, #66a6ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .form-container {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 30px;
+      width: 350px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      animation: slideIn 1s ease;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    h2 {
+      text-align: center;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.8);
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    input:focus {
+      outline: none;
+      background: #fff;
+      box-shadow: 0 0 5px #66a6ff;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #007bff;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Register</h2>
+    <input type="text" id="username" placeholder="Username" required />
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="password" id="password" placeholder="Password" required />
+    <button onclick="validateForm()">Register</button>
+  </div>
+
+  <script>
+    function validateForm() {
+      const password = document.getElementById("password").value;
+
+      if (password.length < 8) {
+        alert("Password must be at least 8 characters long.");
+        return;
+      }
+
+      if (password.includes(" ")) {
+        alert("Password must not contain spaces.");
+        return;
+      }
+
+      alert("Registration successful!");
+      // Submit logic or redirection can be added here
+    }
+  </script>
+
+</body>
+</html>
