@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Random Fun Fact</title>
+  <style>
+    :root {
+      --color-start: #fce4ec;
+      --color-end: #e3f2fd;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, var(--color-start), var(--color-end));
+      transition: background 2s ease;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(12px);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      width: 350px;
+      text-align: center;
+      animation: fadeIn 1s ease;
+      transition: transform 0.3s;
+    }
+
+    .container:hover {
+      transform: scale(1.02);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    #fact {
+      font-size: 18px;
+      color: #333;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.5s ease;
+    }
+
+    #fact.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <p id="fact">Click the button to see a fun fact!</p>
+    <button onclick="loadFact()">Show Fact</button>
+  </div>
+
+  <script>
+    const fallbackFacts = [
+      "Cats can’t taste sweet things.",
+      "A bolt of lightning is 5 times hotter than the sun.",
+      "The Eiffel Tower can grow 6 inches in summer.",
+      "Octopuses have 3 hearts and 9 brains.",
+      "Bananas glow blue under UV light.",
+      "Sloths can hold their breath longer than dolphins.",
+      "Wombat poop is cube-shaped.",
+      "Sea otters hold hands when sleeping."
+    ];
+
+    const gradients = [
+      ['#fde2e4', '#cde6f9'],
+      ['#fce1f5', '#daf4fc'],
+      ['#ffe4e1', '#e0f7fa'],
+      ['#fbd3e9', '#bbdefb'],
+      ['#f9f3f3', '#e0f2f1']
+    ];
+
+    let currentGradient = 0;
+
+    function loadFact() {
+      const factEl = document.getElementById("fact");
+      factEl.classList.remove("show");
+
+      fetch('https://uselessfacts.jsph.pl/random.json?language=en')
+        .then(res => res.json())
+        .then(data => {
+          const shortFact = data.text.length <= 90 ? data.text : getRandomFallback();
+          updateFact(shortFact);
+        })
+        .catch(() => {
+          updateFact(getRandomFallback());
+        });
+
+      currentGradient = (currentGradient + 1) % gradients.length;
+      const root = document.documentElement;
+      root.style.setProperty('--color-start', gradients[currentGradient][0]);
+      root.style.setProperty('--color-end', gradients[currentGradient][1]);
+    }
+
+    function updateFact(text) {
+      const factEl = document.getElementById("fact");
+      factEl.textContent = text;
+      setTimeout(() => factEl.classList.add("show"), 100);
+    }
+
+    function getRandomFallback() {
+      return fallbackFacts[Math.floor(Math.random() * fallbackFacts.length)];
+    }
+  </script>
+
+</body>
+</html>
